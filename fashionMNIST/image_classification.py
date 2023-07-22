@@ -23,10 +23,12 @@ class NeuralNetwork(nn.Module):
         self.flatten = nn.Flatten()
         self.linear_relu_stack = nn.Sequential(
             nn.Linear(in_features=28*28, out_features=512),
+            nn.BatchNorm1d(512),
             nn.ReLU(),
-            nn.Linear(512, 512),
+            nn.Linear(512, 100),
+            nn.BatchNorm1d(100),
             nn.ReLU(),
-            nn.Linear(512, 10)
+            nn.Linear(100, 10)
         )
 
     def forward(self, x):
@@ -76,10 +78,10 @@ def test_loop(dataloader, model, loss_fn):
         f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 
-learning_rate = 2e-3
+learning_rate = 0.008
 
 loss_fn = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 
 def train_model(epochs):
@@ -92,7 +94,8 @@ def train_model(epochs):
     torch.save(model.state_dict(), "model_weights.pth")
     print("DONE")
 
-# train_model(3)
+
+train_model(5)
 
 
 figure = plt.figure(figsize=(8, 8))
@@ -104,4 +107,4 @@ for i in range(1, cols * rows + 1):
     plt.title(labels_map[label])
     plt.axis("off")
     plt.imshow(img.squeeze(), cmap="gray")
-plt.show()
+# plt.show()

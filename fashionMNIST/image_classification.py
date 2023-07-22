@@ -13,18 +13,6 @@ test_data = datasets.FashionMNIST("data", train=False, download="true", transfor
 train_dataloader = DataLoader(train_data, batch_size=32)
 test_dataloader = DataLoader(test_data, batch_size=32)
 
-labels_map = {
-    0: "T-Shirt",
-    1: "Trouser",
-    2: "Pullover",
-    3: "Dress",
-    4: "Coat",
-    5: "Sandal",
-    6: "Shirt",
-    7: "Sneaker",
-    8: "Bag",
-    9: "Ankle Boot",
-}
 
 class NeuralNetwork(nn.Module):
     def __init__(self):

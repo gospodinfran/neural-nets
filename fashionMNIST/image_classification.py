@@ -16,6 +16,8 @@ test_data = datasets.FashionMNIST(
 train_dataloader = DataLoader(train_data, batch_size=32)
 test_dataloader = DataLoader(test_data, batch_size=32)
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 
 class NeuralNetwork(nn.Module):
     def __init__(self):

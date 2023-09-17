@@ -12,13 +12,17 @@ One character of context predicts the next.
 
 Some of the neural nets:
 
-![FeedforwardNN](/assets/Feedworward%20NN.png)
+## Feedforward neural net
 
 Feedforward neural net which achieved 90% accuracy on a binary image fashionMNIST dataset. 
 
-![CNN](/assets/CNN_model.png)
+![FeedforwardNN](/assets/Feedworward%20NN.png)
+
+## Convolutional neural net 
 
 Convolutional neural net which consists of two parts: convolutional net and a fully connected net. In simple terms: the convolutional net extracts features, while the fully connected network makes predictions based on the extracted features.
+
+![CNN](/assets/CNN_model.png)
 
 ### Locally-saved weights
 
